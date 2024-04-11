@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Digital clock</title>
+  <style>
+    #DigitalClock {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      color: #333; /* Change the color as desired */
+      background-color: #a2d6f5; /* Change the background color as desired */
+      padding: 23px;
+      border-radius: 20px;
+      box-shadow: 10px  10px rgba(28, 11, 12, 0.1); /* Add a subtle shadow */
+      display: inline-block; /* Display inline so it's centered horizontally */
+     
+    }
+    body {
+      margin: 0; /* Remove default margin */
+      padding: 50px; /* Remove default padding */
+      display: flex; /* Use flexbox for layout */
+      justify-content: center; /* Center horizontally */
+      align-items: flex-start; /* Align items to the top */
+      min-height: 100vh; /* Set minimum height to full viewport height */
+      top: 10px;
+      left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="DigitalClock"></div>
+  <script type="text/javascript">
+    function show()
+    {
+  var date=new Date();
+  var h=date.getHours();
+  var m=date.getMinutes();
+  var s=date.getSeconds();
+  var session ="AM"
+  if(h==0) // when it meets to [11 hour 59 minutess] then
+  {
+    h=12; //12 hour format 
+  }
+ if(h>12) //13-12=1
+ {
+  h=h-12;
+  session="PM"
+ }
+
+ h=(h<10)?"0"+h :h;
+ m=(m<10)?"0"+m :m;
+ s=(s<10)?"0"+s :s;
+
+document.getElementById("DigitalClock").innerHTML= h + ":" + m + ":" + s  + "" +session;
+  setTimeout(show,1000)
+    }
+    show();
+  </script>
+
+</body>
+</html>
